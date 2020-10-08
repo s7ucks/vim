@@ -1,13 +1,13 @@
-" NERDTree config
-let g:NERDTreeShowHidden = 1
-let g:NERDTreeMinimalUI = 1
-let g:NERDTreeIgnore = []
-let g:NERDTreeStatusLine = ''
-"" Auto close nvim if NERDTree is the only thing left open
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-"" Toggle
-nnoremap <silent> <C-b> :NERDTreeToggle<CR>
-" NERDTree config end
+"" NERDTree config
+"let g:NERDTreeShowHidden = 1
+"let g:NERDTreeMinimalUI = 1
+"let g:NERDTreeIgnore = []
+"let g:NERDTreeStatusLine = ''
+""" Auto close nvim if NERDTree is the only thing left open
+"autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+""" Toggle
+"nnoremap <silent> <C-b> :NERDTreeToggle<CR>
+"" NERDTree config end
 
 " fzf config
 nnoremap <C-p> :FZF<CR>
@@ -16,6 +16,10 @@ let g:fzf_action = {
 	\ 'ctrl-s': 'split',
 	\ 'ctrl-v': 'vsplit'
 	\}
+
+" Requires silversearcher-ag
+" used to ignore gitignore files
+"let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 " fzf config end
 
 " coc.vim config
@@ -35,3 +39,11 @@ let g:fzf_action = {
 autocmd BufNewFile, BufRead *.md set filetype=markdown
 " Highlight the line the cursor is on
 autocmd FileType markdown set cursorline
+
+
+
+"================================================== 
+" Startify Config
+"================================================== 
+
+let g:startify_session_dir = '~/.vim/session'
