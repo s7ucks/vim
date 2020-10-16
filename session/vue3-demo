@@ -1,0 +1,74 @@
+let SessionLoad = 1
+let s:so_save = &so | let s:siso_save = &siso | set so=0 siso=0
+let v:this_session=expand("<sfile>:p")
+silent only
+cd ~/dev/vue3-demo
+if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
+  let s:wipebuf = bufnr('%')
+endif
+set shortmess=aoO
+badd +40 ~/.vim/keymap.vim
+badd +2 src/components/Random.vue
+badd +10 ~/AppData/Local/nvim/init.vim
+badd +22 ~/.vim/plugin.config.vim
+badd +8 ~/.vim/plugin.vim
+badd +39 ~/AppData/Local/nvim/coc-settings.json
+badd +8 ~/.vim/.vimrc
+badd +9 src/App.vue
+badd +1 ~/AppData/Local/Temp/nvimfVZn0B/coc.nvim-8772/coc-nvim.log
+argglobal
+%argdel
+edit src/App.vue
+set splitbelow splitright
+wincmd t
+set winminheight=0
+set winheight=1
+set winminwidth=0
+set winwidth=1
+exe '2resize ' . ((&lines * 3 + 24) / 48)
+exe 'vert 2resize ' . ((&columns * 80 + 98) / 196)
+argglobal
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let s:l = 9 - ((8 * winheight(0) + 22) / 45)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+9
+normal! 012|
+wincmd w
+argglobal
+enew
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+wincmd w
+exe '2resize ' . ((&lines * 3 + 24) / 48)
+exe 'vert 2resize ' . ((&columns * 80 + 98) / 196)
+if exists(':tcd') == 2 | tcd C:/Users | endif
+tabnext 1
+if exists('s:wipebuf') && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
+  silent exe 'bwipe ' . s:wipebuf
+endif
+unlet! s:wipebuf
+set winheight=1 winwidth=20 winminheight=1 winminwidth=1 shortmess=filnxtToOFI
+let s:sx = expand("<sfile>:p:r")."x.vim"
+if filereadable(s:sx)
+  exe "source " . fnameescape(s:sx)
+endif
+let &so = s:so_save | let &siso = s:siso_save
+doautoall SessionLoadPost
+unlet SessionLoad
+" vim: set ft=vim :

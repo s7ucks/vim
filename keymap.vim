@@ -3,27 +3,22 @@
 map <Space> <NOP>
 let mapleader=" "
 nnoremap <Leader>t :tabnext<CR>
-" This is to create new terminal
-"nnoremap <Leader>` :new term://cmd<CR>
-nnoremap - :res -2<CR>
 
 " Coc-Explorer mapping key
 nmap <silent> <Leader>e :CocCommand explorer<CR>
 
-
-"-------------------- 
+"============================== 
 " FUZZY KEYMAP
-"-------------------- 
+"============================== 
 nnoremap <Leader>b :Buffers<CR> 
 nnoremap <Leader>h :History<CR>
 
 " Save state of open Windows and Buffers
 nnoremap <leader>s :mksession<CR>
 
-
-"-------------------- 
+"============================== 
 " Integrated terminal
-"-------------------- 
+"============================== 
 
 " Turn terminal to normal mode with escape
 tnoremap <Esc> <C-\><C-n>
@@ -38,4 +33,17 @@ function! OpenTerminal()
 endfunction
 "nnoremap <Leader>` :call OpenTerminal()<CR>
 
+"============================== 
+" Startify map
+"============================== 
+" Leader SS to save current session (Session save)
+nnoremap <Leader>ss :SSave<CR>
 
+" Leader SL to go to Session list (Session List)
+nnoremap <Leader>sl :SClose<CR>
+
+
+"============================== 
+" VIM-EMMET SETTINGS
+"============================== 
+let g:user_emmet_leader_key='\<Space>'
